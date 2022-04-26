@@ -9,10 +9,10 @@ const Header = ({
   BPM,
   sequence,
   setSequence,
-  sequencer,
   playState,
 }) => {
   const [playFn, setPlayFn] = playState;
+
   const currentInterval = useRef(null);
   const msPerMinute = 1000 * 60;
   //let currentInterval = null;
@@ -33,7 +33,7 @@ const Header = ({
       currentInterval.current = setInterval(() => {
         let currStep = playFn.currentStep;
 
-        if (+currStep < 15) {
+        if (currStep < 15) {
           currStep += 1;
         } else {
           currStep = 0;

@@ -11,8 +11,8 @@
   text-transform: uppercase;
   font-weight: 900;
   font-size: 1.1rem;
-  padding: var(--spacer);
-  width: var(--track-title-width);
+  padding: 30px;
+  width: 50px;
 }
 
 .track_notes {

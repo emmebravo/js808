@@ -48,7 +48,7 @@ const sequences = [
       {
         id: 2,
         instrument: 'Closed Hat',
-        pattern: [1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0],
+        pattern: [1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0],
       },
     ],
   },

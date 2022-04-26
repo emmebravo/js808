@@ -3,29 +3,23 @@ import classNames from 'classnames';
 import '../css/Note.css';
 import Context from '../Context';
 
-const Note = ({ trackId, stepID, isNoteOn }) => {
-  const { currentStep, playing } = useContext(Context);
-  const noteRef = useRef();
+const Note = ({ trackId, stepID, isNoteOn, isNoteOnCurrentStep }) => {
+  //const { currentStep, playing } = useContext(Context);
 
-  const isNoteOnCurrentStep = stepID === currentStep;
+  //const noteRef = useRef(trackId)
+  // value={noteRef}
 
   const noteClassNames = classNames('note', {
     on: isNoteOn,
-    playing: isNoteOn && isNoteOnCurrentStep && playing,
+    playing: isNoteOn && isNoteOnCurrentStep,
   });
 
   useEffect(() => {
-    if (isNoteOn && isNoteOnCurrentStep && playing) {
+    if (isNoteOn && isNoteOnCurrentStep) {
     }
   }, [isNoteOn, isNoteOnCurrentStep]);
 
-  const noteClicked = (e) => {
-    e.target.classList.toggle('on');
-    //toggleNote({ trackId, stepID });
-    // playing();
-  };
-
-  return <div className={noteClassNames} onClick={noteClicked} />;
+  return <div className={noteClassNames} />;
 };
 
 export default Note;

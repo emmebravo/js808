@@ -3,12 +3,21 @@ import Note from './Note';
 import '../css/Track.css';
 import Context from '../Context';
 
-const SequenceRow = ({ title, trackId, pattern, noteCount, currentStepId }) => {
-  const { currentStep, playing } = useContext(Context);
+const SequenceRow = ({
+  title,
+  trackId,
+  pattern,
+  playState,
+  noteCount,
+  currentStepId,
+}) => {
+  //const { currentStep, playing } = useContext(Context);
+
+  const [playFn] = playState;
 
   const notes = pattern.map((num, i) => {
     const isNoteOn = pattern[i] === 1;
-    // const isNoteOnCurrentStep = currentStep === i;
+    const isNoteOnCurrentStep = playFn.currentStep === i;
     const stepID = i;
 
     return (
@@ -17,8 +26,7 @@ const SequenceRow = ({ title, trackId, pattern, noteCount, currentStepId }) => {
         trackId={trackId}
         stepID={stepID}
         isNoteOn={isNoteOn}
-
-        // isNoteOnCurrentStep={isNoteOnCurrentStep}
+        isNoteOnCurrentStep={isNoteOnCurrentStep}
         // play={playing}
       />
     );
