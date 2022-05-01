@@ -1,48 +1,35 @@
 import { useEffect, useRef } from 'react';
 
-const Header = ({
-  setStartTime,
-  setPastLapse,
-  setBPM,
-  isSequencePlaying,
-  startTime,
-  BPM,
-  sequence,
-  setSequence,
-  playState,
-}) => {
+const Header = ({ sequence, setSequence, playState }) => {
   const [playFn, setPlayFn] = playState;
 
-  const currentInterval = useRef(null);
+  const currentInterval = useRef(null); // { current: null }
   const msPerMinute = 1000 * 60;
-  //let currentInterval = null;
 
   const onPlay = (e) => {
     setPlayFn({ ...playFn, playing: true });
-    // some kind of function to play beats
   };
 
   console.log('current step', playFn.currentStep);
 
   useEffect(() => {
-    if (playFn.playing) {
+    if (playFn.playing === true) {
       if (currentInterval.current) {
         clearInterval(currentInterval.current);
       }
 
       currentInterval.current = setInterval(() => {
         let currStep = playFn.currentStep;
-
+        //change 15 to length of sequence
         if (currStep < 15) {
           currStep += 1;
         } else {
           currStep = 0;
         }
         setPlayFn({ ...playFn, currentStep: currStep });
-        // playDrumsForStep(currentStep);
       }, msPerMinute / playFn.bpm / playFn.beatsPerBar);
     }
-  }, [playFn.playing, playFn.currentStep]);
+  }, [playFn.playing, playFn.currentStep, playFn.bpm]);
 
   return (
     <>
@@ -50,7 +37,7 @@ const Header = ({
       <button onClick={onPlay}>Play</button>
       <button
         onClick={() => {
-          clearInterval(currentInterval.current);
+          currentInterval.current && clearInterval(currentInterval.current);
           setPlayFn({ ...playFn, playing: false });
         }}
       >
@@ -66,6 +53,7 @@ const Header = ({
         value={sequence}
         onChange={(e) => setSequence(Number(e.target.value))}
       >
+        {/* create options by mapping over data */}
         <option value={1}>sequence 1</option>
         <option value={2}>sequence 2</option>
         <option value={3}>sequence 3</option>

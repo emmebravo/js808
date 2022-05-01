@@ -1,21 +1,10 @@
-import { useContext } from 'react';
 import Note from './Note';
 import '../css/Track.css';
-import Context from '../Context';
 
-const SequenceRow = ({
-  title,
-  trackId,
-  pattern,
-  playState,
-  noteCount,
-  currentStepId,
-}) => {
-  //const { currentStep, playing } = useContext(Context);
-
+const SequenceRow = ({ title, trackId, pattern, playState }) => {
   const [playFn] = playState;
 
-  const notes = pattern.map((num, i) => {
+  const notes = pattern.map((_, i) => {
     const isNoteOn = pattern[i] === 1;
     const isNoteOnCurrentStep = playFn.currentStep === i;
     const stepID = i;
@@ -27,7 +16,6 @@ const SequenceRow = ({
         stepID={stepID}
         isNoteOn={isNoteOn}
         isNoteOnCurrentStep={isNoteOnCurrentStep}
-        // play={playing}
       />
     );
   });

@@ -1,7 +1,6 @@
-import React from 'react';
 import SequenceRow from './SequenceRow';
 
-const Sequencer = ({ currentStepId, currentSequence, playState }) => {
+const Sequencer = ({ currentSequence, playState }) => {
   return (
     <div className='track-list'>
       {currentSequence.map((seq) => {
@@ -15,7 +14,6 @@ const Sequencer = ({ currentStepId, currentSequence, playState }) => {
                   title={instrument}
                   pattern={pattern}
                   noteCount={16}
-                  currentStepId={currentStepId}
                   trackId={id}
                   playState={playState}
                 />

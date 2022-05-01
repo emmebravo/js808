@@ -1,25 +1,19 @@
-import { useEffect, useContext, useRef } from 'react';
-import classNames from 'classnames';
+import { useEffect, useRef } from 'react';
 import '../css/Note.css';
-import Context from '../Context';
 
-const Note = ({ trackId, stepID, isNoteOn, isNoteOnCurrentStep }) => {
-  //const { currentStep, playing } = useContext(Context);
-
-  //const noteRef = useRef(trackId)
-  // value={noteRef}
-
-  const noteClassNames = classNames('note', {
-    on: isNoteOn,
-    playing: isNoteOn && isNoteOnCurrentStep,
-  });
+const Note = ({ isNoteOn, isNoteOnCurrentStep }) => {
+  const noteRef = useRef(null);
 
   useEffect(() => {
+    const divDiv = noteRef.current;
     if (isNoteOn && isNoteOnCurrentStep) {
+      divDiv.style.backgroundColor = 'pink';
+    } else if (isNoteOn) {
+      divDiv.style.backgroundColor = 'grey';
     }
   }, [isNoteOn, isNoteOnCurrentStep]);
 
-  return <div className={noteClassNames} />;
+  return <div ref={noteRef} className='note' />;
 };
 
 export default Note;
