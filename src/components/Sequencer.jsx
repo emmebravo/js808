@@ -13,8 +13,6 @@ const Sequencer = ({ currentSequence, playState }) => {
                   key={`sequence ` + id}
                   title={instrument}
                   pattern={pattern}
-                  noteCount={16}
-                  trackId={id}
                   playState={playState}
                 />
               );

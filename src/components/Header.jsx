@@ -20,6 +20,7 @@ const Header = ({ sequence, setSequence, playState }) => {
 
       currentInterval.current = setInterval(() => {
         let currStep = playFn.currentStep;
+
         //change 15 to length of sequence
         if (currStep < 15) {
           currStep += 1;
