@@ -13,7 +13,7 @@ const Header = ({ sequence, setSequence, playState }) => {
   console.log('current step', playFn.currentStep);
 
   useEffect(() => {
-    if (playFn.playing === true) {
+    if (playFn.playing) {
       if (currentInterval.current) {
         clearInterval(currentInterval.current);
       }
@@ -38,7 +38,7 @@ const Header = ({ sequence, setSequence, playState }) => {
       <button onClick={onPlay}>Play</button>
       <button
         onClick={() => {
-          currentInterval.current && clearInterval(currentInterval.current);
+          clearInterval(currentInterval.current);
           setPlayFn({ ...playFn, playing: false });
         }}
       >
