@@ -46,7 +46,7 @@ const Header = ({ sequence, setSequence, playState }) => {
         type='number'
         placeholder='BPM'
         value={playFn.bpm}
-        onChange={(e) => setPlayFn({ ...playFn, bpm: e.target.value })}
+        onChange={(e) => setPlayFn({ ...playFn, bpm: Number(e.target.value) })}
       />
       <select
         value={sequence}
