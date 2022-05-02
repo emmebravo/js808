@@ -10,8 +10,6 @@ const Header = ({ sequence, setSequence, playState }) => {
     setPlayFn({ ...playFn, playing: true });
   };
 
-  console.log('current step', playFn.currentStep);
-
   useEffect(() => {
     if (playFn.playing) {
       if (currentInterval.current) {
